@@ -39,4 +39,4 @@ User-agent: Googlebot-Image
 Allow: /
 
 # Sitemap Location
-Sitemap: https://rcfpl.netlify.app/sitemap.xml
+Sitemap: https://www.rcfpl.net/sitemap.xml

@@ -33,18 +33,18 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://rcfpl.netlify.app/",
+    canonical: "https://www.rcfpl.net/",
   },
   openGraph: {
     type: "website",
-    url: "https://rcfpl.netlify.app/",
+    url: "https://www.rcfpl.net/",
     title: "Return Consistency in FPL – Reliable Fantasy Premier League Players",
     description: "Explore Return Consistency in Fantasy Premier League (FPL). Identify reliable players based on 5+ point returns, not just explosive hauls. Free FPL analysis tool.",
     siteName: "RCFPL",
     locale: "en_US",
     images: [
       {
-        url: "https://rcfpl.netlify.app/og-image.png",
+        url: "https://www.rcfpl.net/og-image.png",
         width: 1200,
         height: 630,
         alt: "RCFPL - Return Consistency for Fantasy Premier League",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "Return Consistency in FPL – Reliable Fantasy Premier League Players",
     description: "Explore Return Consistency in Fantasy Premier League (FPL). Identify reliable players based on 5+ point returns, not just explosive hauls.",
     creator: "@mostafaALBASH",
-    images: ["https://rcfpl.netlify.app/og-image.png"],
+    images: ["https://www.rcfpl.net/og-image.png"],
   },
   icons: {
     icon: [
@@ -103,8 +103,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebApplication",
-              "@id": "https://rcfpl.netlify.app/#webapp",
-              "url": "https://rcfpl.netlify.app/",
+              "@id": "https://www.rcfpl.net/#webapp",
+              "url": "https://www.rcfpl.net/",
               "name": "RCFPL - Return Consistency for Fantasy Premier League",
               "alternateName": "Return Consistency FPL",
               "description": "Explore Return Consistency in Fantasy Premier League (FPL). Identify reliable players based on 5+ point returns, not just explosive hauls. Free FPL analysis tool with player statistics, consistency scores, and filtering options.",
@@ -143,7 +143,7 @@ export default function RootLayout({
               "dateModified": "2026-01-31",
               "softwareVersion": "1.0.0",
               "releaseNotes": "Production release with FPL return consistency analysis",
-              "screenshot": "https://rcfpl.netlify.app/og-image.png",
+              "screenshot": "https://www.rcfpl.net/og-image.png",
               "permissions": "No special permissions required",
               "aggregateRating": {
                 "@type": "AggregateRating",
@@ -154,7 +154,7 @@ export default function RootLayout({
               },
               "softwareHelp": {
                 "@type": "CreativeWork",
-                "url": "https://rcfpl.netlify.app/#definition"
+                "url": "https://www.rcfpl.net/#definition"
               }
             })
           }}
@@ -167,7 +167,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "FAQPage",
-              "@id": "https://rcfpl.netlify.app/#faq",
+              "@id": "https://www.rcfpl.net/#faq",
               "mainEntity": [
                 {
                   "@type": "Question",
@@ -245,12 +245,12 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "@id": "https://rcfpl.netlify.app/#organization",
+              "@id": "https://www.rcfpl.net/#organization",
               "name": "RCFPL",
-              "url": "https://rcfpl.netlify.app/",
+              "url": "https://www.rcfpl.net/",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://rcfpl.netlify.app/logo.png",
+                "url": "https://www.rcfpl.net/logo.png",
                 "width": 180,
                 "height": 180
               },
@@ -274,18 +274,18 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "@id": "https://rcfpl.netlify.app/#website",
-              "url": "https://rcfpl.netlify.app/",
+              "@id": "https://www.rcfpl.net/#website",
+              "url": "https://www.rcfpl.net/",
               "name": "RCFPL - Return Consistency for Fantasy Premier League",
               "description": "Explore Return Consistency in Fantasy Premier League (FPL). Identify reliable players based on 5+ point returns, not just explosive hauls.",
               "publisher": {
-                "@id": "https://rcfpl.netlify.app/#organization"
+                "@id": "https://www.rcfpl.net/#organization"
               },
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": {
                   "@type": "EntryPoint",
-                  "urlTemplate": "https://rcfpl.netlify.app/?search={search_term_string}"
+                  "urlTemplate": "https://www.rcfpl.net/?search={search_term_string}"
                 },
                 "query-input": "required name=search_term_string"
               },
@@ -306,19 +306,19 @@ export default function RootLayout({
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://rcfpl.netlify.app/"
+                  "item": "https://www.rcfpl.net/"
                 },
                 {
                   "@type": "ListItem",
                   "position": 2,
                   "name": "Return Consistency Analysis",
-                  "item": "https://rcfpl.netlify.app/#definition"
+                  "item": "https://www.rcfpl.net/#definition"
                 },
                 {
                   "@type": "ListItem",
                   "position": 3,
                   "name": "Methodology",
-                  "item": "https://rcfpl.netlify.app/#methodology"
+                  "item": "https://www.rcfpl.net/#methodology"
                 }
               ]
             })
