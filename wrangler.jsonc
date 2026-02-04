@@ -17,7 +17,7 @@
 	],
 	"pages_build_output_dir": ".open-next",
 	"assets": {
-		"binding": "ASSETS",
+		"binding": "NEXT_ASSETS",
 		"directory": ".open-next/assets"
 	},
 	// "images": {
