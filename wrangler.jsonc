@@ -34,7 +34,29 @@
 	],
 	"observability": {
 		"enabled": true
-	}
+	},
+	/**
+	 * Routes - Define domains where the Worker is accessible
+	 * https://developers.cloudflare.com/workers/configuration/routing/routes/
+	 */
+	"routes": [
+		{
+			"pattern": "rcfpl.net/*",
+			"zone_name": "rcfpl.net"
+		},
+		{
+			"pattern": "www.rcfpl.net/*",
+			"zone_name": "rcfpl.net"
+		},
+		{
+			"pattern": "*rcfpl.net/*",
+			"zone_name": "rcfpl.net"
+		},
+		{
+			"pattern": "*.rcfpl.net/*",
+			"zone_name": "rcfpl.net"
+		}
+	]
 	/**
 	 * Smart Placement
 	 * https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
