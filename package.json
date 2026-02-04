@@ -14,9 +14,12 @@
 	},
 	"dependencies": {
 		"@opennextjs/cloudflare": "^1.15.1",
+		"@popperjs/core": "^2.11.8",
+		"@tippyjs/react": "^4.2.6",
 		"next": "16.1.5",
 		"react": "19.1.5",
-		"react-dom": "19.1.5"
+		"react-dom": "19.1.5",
+		"tippy.js": "^6.3.7"
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "^3",
