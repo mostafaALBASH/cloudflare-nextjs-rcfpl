@@ -1,9 +1,8 @@
 import FPLViewer from '@/components/FPLViewer';
-import playerMetricsData from '@/data/player-metrics.json';
-import { PlayerMetrics } from '@/lib/types';
+import { fetchPlayerMetrics } from '@/lib/dataService';
 
-export default function Home() {
-  const playerMetrics = playerMetricsData as PlayerMetrics[];
+export default async function Home() {
+  const playerMetrics = await fetchPlayerMetrics();
 
   return (
     <main 

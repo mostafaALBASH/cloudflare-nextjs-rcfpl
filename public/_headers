@@ -3,6 +3,16 @@
 /_next/static/*
   Cache-Control: public,max-age=31536000,immutable
 
+# Data JSON files - Versioned (immutable, 1 year cache)
+/data/*.v*.json
+  Cache-Control: public,max-age=31536000,immutable
+  Content-Type: application/json; charset=UTF-8
+
+# Data JSON files - Current (5 minute cache)
+/data/*.json
+  Cache-Control: public,max-age=300
+  Content-Type: application/json; charset=UTF-8
+
 # Security headers for all routes
 /*
   X-Frame-Options: DENY
