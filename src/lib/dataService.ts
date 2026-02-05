@@ -43,23 +43,6 @@ export async function fetchPlayerMetrics(): Promise<PlayerMetrics[]> {
     
     const data = await response.json();
     
-    const response = await fetch(url, {
-      // Enable caching for better performance
-      cache: 'force-cache',
-      // Add headers for better compatibility
-      headers: {
-        'Accept': 'application/json',
-      },
-    });
-    
-    if (!response.ok) {
-      throw new Error(
-        `Failed to fetch player metrics: ${response.status} ${response.statusText}`
-      );
-    }
-    
-    const data = await response.json();
-    
     // Validate data structure
     if (!Array.isArray(data)) {
       throw new Error('Invalid data format: expected array');
