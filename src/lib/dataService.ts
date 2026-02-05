@@ -7,57 +7,41 @@
  */
 
 import { PlayerMetrics } from './types';
-import fs from 'fs';
-import path from 'path';
 
 /**
  * Get the base URL for data fetching based on environment
  */
 function getDataBaseUrl(): string {
-  // In browser, check if we're on production domain
-  if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname;
-    if (hostname === 'www.rcfpl.net' || hostname === 'rcfpl.net') {
-      return 'https://www.rcfpl.net/data';
-    }
-    // For development in browser, use relative path
-    return '/data';
-  }
-  
-  // For server-side rendering (build time), return null to use filesystem
-  return '';
+  // Always use relative path - works in both browser and Workers
+  return '/data';
 }
 
 /**
- * Fetch player metrics data from JSON endpoint or filesystem
+ * Fetch player metrics data from JSON endpoint
  * @returns Promise resolving to player metrics array
  * @throws Error if fetch fails or data is invalid
  */
 export async function fetchPlayerMetrics(): Promise<PlayerMetrics[]> {
   try {
-    // During build time (server-side), read from filesystem
-    if (typeof window === 'undefined') {
-      const filePath = path.join(process.cwd(), 'public', 'data', 'player-metrics.json');
-      
-      // Check if file exists
-      if (!fs.existsSync(filePath)) {
-        throw new Error(`Player metrics file not found: ${filePath}`);
-      }
-      
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-      const data = JSON.parse(fileContent);
-      
-      // Validate data structure
-      if (!Array.isArray(data)) {
-        throw new Error('Invalid data format: expected array');
-      }
-      
-      return data as PlayerMetrics[];
-    }
-    
-    // In browser, fetch via HTTP
     const baseUrl = getDataBaseUrl();
     const url = `${baseUrl}/player-metrics.json`;
+    
+    const response = await fetch(url, {
+      // Enable caching for better performance
+      cache: 'force-cache',
+      // Add headers for better compatibility
+      headers: {
+        'Accept': 'application/json',
+      },
+    });
+    
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch player metrics: ${response.status} ${response.statusText}`
+      );
+    }
+    
+    const data = await response.json();
     
     const response = await fetch(url, {
       // Enable caching for better performance
