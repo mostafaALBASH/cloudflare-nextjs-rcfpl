@@ -2,19 +2,11 @@
  * Data Service - HTTP-based JSON data fetching
  * Handles environment-based URL resolution and data loading
  * 
- * @version 1.0.0
- * @date February 4, 2026
+ * @version 1.1.0
+ * @date February 5, 2026
  */
 
 import { PlayerMetrics } from './types';
-
-/**
- * Get the base URL for data fetching based on environment
- */
-function getDataBaseUrl(): string {
-  // Always use relative path - works in both browser and Workers
-  return '/data';
-}
 
 /**
  * Fetch player metrics data from JSON endpoint
@@ -23,8 +15,25 @@ function getDataBaseUrl(): string {
  */
 export async function fetchPlayerMetrics(): Promise<PlayerMetrics[]> {
   try {
-    const baseUrl = getDataBaseUrl();
-    const url = `${baseUrl}/player-metrics.json`;
+    // During build time (Node.js), read from filesystem
+    if (typeof process !== 'undefined' && process.versions && process.versions.node) {
+      // Dynamic import to avoid bundling fs in Workers
+      const fs = await import('fs');
+      const path = await import('path');
+      
+      const filePath = path.join(process.cwd(), 'public', 'data', 'player-metrics.json');
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      const data = JSON.parse(fileContent);
+      
+      if (!Array.isArray(data)) {
+        throw new Error('Invalid data format: expected array');
+      }
+      
+      return data as PlayerMetrics[];
+    }
+    
+    // In Workers runtime or browser, use fetch
+    const url = '/data/player-metrics.json';
     
     const response = await fetch(url, {
       // Enable caching for better performance
