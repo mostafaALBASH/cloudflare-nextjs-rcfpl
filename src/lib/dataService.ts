@@ -6,7 +6,7 @@
 
 import { PlayerMetrics } from './types';
 // Import JSON for build-time SSG - will be tree-shaken in Workers bundle
-import playerMetricsData from '@/../../public/data/player-metrics.json';
+import playerMetricsData from '../../public/data/player-metrics.json';
 
 /**
  * Fetch player metrics data
