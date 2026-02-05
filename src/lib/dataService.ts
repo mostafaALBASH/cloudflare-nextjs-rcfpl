@@ -1,38 +1,25 @@
 /**
- * Data Service - HTTP-based JSON data fetching
- * Handles environment-based URL resolution and data loading
- * 
- * @version 1.1.0
+ * Data Service - JSON data fetching
+ * @version 1.2.0
  * @date February 5, 2026
  */
 
 import { PlayerMetrics } from './types';
+// Import JSON for build-time SSG - will be tree-shaken in Workers bundle
+import playerMetricsData from '@/../../public/data/player-metrics.json';
 
 /**
- * Fetch player metrics data from JSON endpoint
+ * Fetch player metrics data
  * @returns Promise resolving to player metrics array
- * @throws Error if fetch fails or data is invalid
  */
 export async function fetchPlayerMetrics(): Promise<PlayerMetrics[]> {
   try {
-    // During build time (Node.js), read from filesystem
-    if (typeof process !== 'undefined' && process.versions && process.versions.node) {
-      // Dynamic import to avoid bundling fs in Workers
-      const fs = await import('fs');
-      const path = await import('path');
-      
-      const filePath = path.join(process.cwd(), 'public', 'data', 'player-metrics.json');
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-      const data = JSON.parse(fileContent);
-      
-      if (!Array.isArray(data)) {
-        throw new Error('Invalid data format: expected array');
-      }
-      
-      return data as PlayerMetrics[];
+    // During build/SSG, use imported data
+    if (typeof window === 'undefined' && playerMetricsData) {
+      return playerMetricsData as PlayerMetrics[];
     }
     
-    // In Workers runtime or browser, use fetch
+    // In browser or Workers runtime, fetch from assets
     const url = '/data/player-metrics.json';
     
     const response = await fetch(url, {
